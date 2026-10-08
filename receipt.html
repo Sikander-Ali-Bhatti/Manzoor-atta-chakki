@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% block t %}Receipt #{{ o.id }}{% endblock %}{% block c %}
+<h1>{{ s.business_name }}</h1><p>{{ s.address }}<br>Phone: {{ s.phone }}</p><hr>
+<p><b>Order #{{ o.id }}</b> · {{ o.created_at }} · Status: {{ o.status }}<br>Customer: {{ o.name }} · {{ o.phone }}<br>Address: {{ o.address }}</p>
+<div class="wrap"><table><tr><th>Product</th><th>Qty</th><th>Price</th><th>Amount</th></tr>
+{% for i in items %}<tr><td>{{ i.name }}</td><td>{{ i.qty }}</td><td>Rs. {{ i.price }}</td><td>Rs. {{ (i.price*i.qty)|int }}</td></tr>{% endfor %}</table></div>
+<p>Subtotal: Rs. {{ o.subtotal }}<br>Delivery: Rs. {{ o.delivery_charge }}<br><b>Grand total: Rs. {{ o.total }}</b><br>Payment: {{ o.payment_method }}</p>
+<button class="noprint" onclick="print()">Print</button>{% endblock %}

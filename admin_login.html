@@ -1,0 +1,2 @@
+{% extends 'base.html' %}{% block c %}<h1>Admin Login</h1><form method="post"><input type="hidden" name="csrf" value="{{ csrf() }}">
+<label>Username</label><input name="username" required><label>Password</label><input name="password" type="password" required><button>Login</button></form>{% endblock %}

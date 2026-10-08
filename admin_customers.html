@@ -1,0 +1,2 @@
+{% extends 'base.html' %}{% block c %}<h1>Customers</h1><div class="wrap"><table><tr><th>Name</th><th>Phone</th><th>WhatsApp</th><th>Address</th><th>Orders</th></tr>
+{% for c in rows %}<tr><td>{{ c.name }}</td><td>{{ c.phone }}</td><td>{{ c.whatsapp }}</td><td>{{ c.address }}</td><td>{{ c.cnt }}{% for i in (c.oids or '').split(',') if i %} <a href="/admin/orders/{{ i }}">#{{ i }}</a>{% endfor %}</td></tr>{% endfor %}</table></div>{% endblock %}

@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% block c %}<h1>Thank you, {{ o.name }}!</h1><p>Your order <b>#{{ o.id }}</b> has been received. Status: <b>{{ o.status }}</b>.</p>
+<p>Total: <b>Rs. {{ o.total }}</b> (incl. delivery Rs. {{ o.delivery_charge }}) · Payment: {{ o.payment_method }}</p>
+{% if pm and pm.details %}<p>{{ pm.details }}</p>{% endif %}
+<a class="btn" href="/receipt/{{ o.token }}">View / Print Receipt</a><a class="btn wa" href="{{ s.whatsapp|wa }}">WhatsApp Us</a>{% endblock %}

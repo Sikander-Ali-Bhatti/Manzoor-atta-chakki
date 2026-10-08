@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block c %}<h1>Orders</h1><p><a href="/admin/orders">All</a>{% for x in STATUSES %} · <a href="/admin/orders?status={{ x }}">{{ x }}</a>{% endfor %}</p>{% include 'orders_table.html' %}{% endblock %}

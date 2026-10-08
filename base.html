@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block t %}{{ s.business_name }}{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head><body>
+<header><a class="brand" href="/">{% if s.logo %}<img src="/uploads/{{ s.logo }}" alt="">{% endif %}{{ s.business_name }}</a>
+<nav>{% if request.path.startswith('/admin') and session.admin %}
+<a href="/admin">Dashboard</a><a href="/admin/orders">Orders</a><a href="/admin/products">Products</a><a href="/admin/customers">Customers</a><a href="/admin/settings">Settings</a><a href="/admin/logout">Logout</a>
+{% else %}<a href="/">Home</a><a href="/about">About</a><a href="/products">Products</a><a href="/order">Order Online</a><a href="/delivery">Delivery</a><a href="/feedback">Feedback</a><a href="/contact">Contact</a>{% endif %}</nav></header>
+{% for m in get_flashed_messages() %}<div class="flash">{{ m }}</div>{% endfor %}
+<main>{% block c %}{% endblock %}</main>
+<footer>{{ s.business_name }} · {{ s.address }} · Open {{ s.hours }}</footer></body></html>

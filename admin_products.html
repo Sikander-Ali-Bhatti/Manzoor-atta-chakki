@@ -1,0 +1,3 @@
+{% extends 'base.html' %}{% block c %}<h1>Products</h1><a class="btn" href="/admin/products/new">Add Product</a>
+<div class="wrap"><table><tr><th>Name</th><th>Price</th><th>Status</th><th></th></tr>{% for p in rows %}<tr><td>{{ p.name }}</td><td>Rs. {{ p.price }}/{{ p.unit }}</td><td>{{ 'Available' if p.available else 'Unavailable' }}</td>
+<td><a href="/admin/products/{{ p.id }}">Edit</a> <form class="inline" method="post" action="/admin/products/{{ p.id }}/delete" onsubmit="return confirm('Delete product?')"><input type="hidden" name="csrf" value="{{ csrf() }}"><button class="red">Delete</button></form></td></tr>{% endfor %}</table></div>{% endblock %}

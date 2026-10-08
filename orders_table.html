@@ -1,0 +1,2 @@
+<div class="wrap"><table><tr><th>#</th><th>Date</th><th>Customer</th><th>Total</th><th>Payment</th><th>Status</th></tr>
+{% for o in rows %}<tr><td><a href="/admin/orders/{{ o.id }}">#{{ o.id }}</a></td><td>{{ o.created_at }}</td><td>{{ o.name }}</td><td>Rs. {{ o.total }}</td><td>{{ o.payment_method }}</td><td><span class="tag">{{ o.status }}</span></td></tr>{% else %}<tr><td colspan="6">No orders.</td></tr>{% endfor %}</table></div>

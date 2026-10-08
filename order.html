@@ -1,0 +1,18 @@
+{% extends 'base.html' %}{% block c %}<h1>Order Online</h1>
+<form method="post"><input type="hidden" name="csrf" value="{{ csrf() }}">
+<h2>1. Choose products</h2>
+{% for p in prods %}<div class="card"><label>{{ p.name }} — Rs. {{ p.price }} per {{ p.unit }}</label>
+<input class="qty" type="number" name="qty_{{ p.id }}" data-price="{{ p.price }}" min="0" max="100" step="0.5" value="{{ f.get('qty_' ~ p.id, 0) }}"></div>{% else %}<p>No products available right now.</p>{% endfor %}
+<h2>2. Your details</h2>
+<label>Full Name</label><input name="name" value="{{ f.get('name','') }}" required>
+<label>Phone Number</label><input name="phone" type="tel" value="{{ f.get('phone','') }}" required>
+<label>WhatsApp Number (optional)</label><input name="whatsapp" type="tel" value="{{ f.get('whatsapp','') }}">
+<label>Delivery Address</label><textarea name="address" rows="3" required>{{ f.get('address','') }}</textarea>
+<label>Note (optional)</label><textarea name="note" rows="2">{{ f.get('note','') }}</textarea>
+<h2>3. Payment method</h2>
+{% for m in pms %}<p><label><input type="radio" name="payment" value="{{ m.id }}" {{ 'checked' if f.get('payment')==m.id|string }} required>{{ m.name }}</label><br><small>{{ m.details }}</small></p>{% endfor %}
+<h2>Total</h2><p>Subtotal: Rs. <span id="sub">0</span><br>Delivery: Rs. {{ fee }}<br><b>Grand total: Rs. <span id="tot">{{ fee }}</span></b></p>
+<button>Place Order</button></form>
+<script>const fee={{ fee }};function calc(){let t=0;document.querySelectorAll('.qty').forEach(i=>t+=Math.floor((+i.value||0)*i.dataset.price));
+document.getElementById('sub').textContent=t;document.getElementById('tot').textContent=t+fee}
+document.querySelectorAll('.qty').forEach(i=>i.addEventListener('input',calc));calc()</script>{% endblock %}

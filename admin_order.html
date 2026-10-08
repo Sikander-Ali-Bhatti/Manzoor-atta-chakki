@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block c %}<h1>Order #{{ o.id }}</h1>
+<p>{{ o.created_at }}<br><b>{{ o.name }}</b> · {{ o.phone }}{% if o.whatsapp %} · WhatsApp {{ o.whatsapp }}{% endif %}<br>{{ o.address }}{% if o.note %}<br>Note: {{ o.note }}{% endif %}<br>Payment: <b>{{ o.payment_method }}</b></p>
+<div class="wrap"><table><tr><th>Product</th><th>Qty</th><th>Price</th></tr>{% for i in items %}<tr><td>{{ i.name }}</td><td>{{ i.qty }}</td><td>Rs. {{ i.price }}</td></tr>{% endfor %}</table></div>
+<p>Subtotal Rs. {{ o.subtotal }} + Delivery Rs. {{ o.delivery_charge }} = <b>Rs. {{ o.total }}</b></p>
+<form method="post"><input type="hidden" name="csrf" value="{{ csrf() }}"><label>Status</label>
+<select name="status">{% for x in STATUSES %}<option {{ 'selected' if x==o.status }}>{{ x }}</option>{% endfor %}</select>
+<label>Delivery charge (Rs.)</label><input type="number" name="delivery_charge" min="0" value="{{ o.delivery_charge }}"><button>Save</button></form>
+<form method="post" onsubmit="return confirm('Cancel this order?')"><input type="hidden" name="csrf" value="{{ csrf() }}"><input type="hidden" name="status" value="Cancelled"><input type="hidden" name="delivery_charge" value="{{ o.delivery_charge }}"><button class="red">Cancel Order</button></form>
+<a class="btn alt" href="/receipt/{{ o.token }}">Receipt</a>{% endblock %}

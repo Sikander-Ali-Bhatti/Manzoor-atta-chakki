@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block c %}<h1>Product</h1><form method="post" enctype="multipart/form-data"><input type="hidden" name="csrf" value="{{ csrf() }}">
+<label>Name</label><input name="name" value="{{ p.name }}" required><label>Description</label><textarea name="description">{{ p.description }}</textarea>
+<label>Price (Rs.)</label><input type="number" name="price" min="0" value="{{ p.price }}"><label>Unit</label><input name="unit" value="{{ p.unit }}">
+<p><label><input type="checkbox" name="available" {{ 'checked' if p.available }}>Available</label></p>
+{% if p.image %}<img src="/uploads/{{ p.image }}" width="120"><p><label><input type="checkbox" name="rm_image">Remove photo</label></p>{% endif %}
+<label>Photo (upload / replace)</label><input type="file" name="image" accept="image/*"><button>Save</button></form>{% endblock %}

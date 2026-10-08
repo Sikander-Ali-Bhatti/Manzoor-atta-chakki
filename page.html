@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block c %}
+{% if p=='about' %}<h1>About Us</h1><p>{{ s.description }}</p><p>Owner: {{ s.owner }}</p>
+{% elif p=='delivery' %}<h1>Delivery Information</h1><p>We offer home delivery. Standard delivery charge: <b>Rs. {{ s.delivery_charge }}</b>. For long distances the charge may be higher; we will confirm with you.</p>
+{% elif p=='feedback' %}<h1>Customer Feedback</h1><p>We would love to hear from you. Please send your feedback on WhatsApp or call us.</p><a class="btn wa" href="{{ s.whatsapp|wa }}">WhatsApp Us</a>
+{% else %}<h1>Contact Us</h1><p><b>Address:</b> {{ s.address }}<br><b>Hours:</b> {{ s.hours }}<br><b>Phone:</b> {{ s.phone }}</p>
+<a class="btn alt" href="tel:{{ s.phone }}">Call Us</a><a class="btn wa" href="{{ s.whatsapp|wa }}">WhatsApp Us</a>{% endif %}{% endblock %}

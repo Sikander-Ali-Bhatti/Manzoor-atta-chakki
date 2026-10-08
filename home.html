@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% block c %}
+<section class="hero"><div><h1>{{ s.business_name }}</h1><p>{{ s.description }}</p>
+<a class="btn" href="/order">Order Now</a><a class="btn alt" href="tel:{{ s.phone }}">Call Us</a><a class="btn wa" href="{{ s.whatsapp|wa }}">WhatsApp Us</a></div>
+{% if s.hero_photo %}<img src="/uploads/{{ s.hero_photo }}" alt="">{% else %}<div class="ph">Business photo<br><small>(add from Admin → Settings)</small></div>{% endif %}</section>
+<h2>Our Products &amp; Current Prices</h2>{% include 'grid.html' %}
+<h2>Visit or Contact Us</h2><p><b>Address:</b> {{ s.address }}<br><b>Opening hours:</b> {{ s.hours }}<br><b>Phone:</b> {{ s.phone }} · <b>WhatsApp:</b> {{ s.whatsapp }}<br>
+<b>Home delivery available:</b> Rs. {{ s.delivery_charge }} (may vary for long distance).</p>{% endblock %}

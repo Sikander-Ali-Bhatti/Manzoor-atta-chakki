@@ -1,0 +1,20 @@
+:root{--g:#2f6b3a;--bg:#faf7f0;--tx:#222;--ln:#ddd}
+*{box-sizing:border-box}body{margin:0;font:18px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+header{background:var(--g);color:#fff;padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+header a{color:#fff;text-decoration:none;margin-right:12px}.brand{font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:8px}.brand img{height:36px}
+main{max-width:1000px;margin:auto;padding:14px}footer{text-align:center;padding:20px;color:#666;font-size:.9rem}
+.btn,button{display:inline-block;background:var(--g);color:#fff;border:0;border-radius:8px;padding:12px 18px;font-size:1rem;text-decoration:none;cursor:pointer;margin:4px 4px 4px 0}
+.btn.alt{background:#1d4e89}.btn.wa{background:#1a9c4a}.btn.red,button.red{background:#b3261e}.btn[disabled],.na{background:#999}
+.hero{display:grid;gap:16px;grid-template-columns:1fr;align-items:center}.hero img,.ph{width:100%;border-radius:12px;max-height:320px;object-fit:cover}
+.ph{background:#e8e2d3;color:#777;text-align:center;padding:60px 10px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.card{background:#fff;border:1px solid var(--ln);border-radius:12px;padding:14px}.card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+.price{font-size:1.3rem;font-weight:700;color:var(--g)}.na{color:#fff;display:inline-block;padding:4px 10px;border-radius:6px}
+input,select,textarea{width:100%;padding:11px;font-size:1rem;border:1px solid #bbb;border-radius:8px;margin:4px 0 12px}
+input[type=checkbox],input[type=radio]{width:auto;margin-right:6px}label{font-weight:600}
+.flash{background:#fff3cd;border:1px solid #e0c76b;padding:10px 14px;margin:10px 14px;border-radius:8px}
+table{width:100%;border-collapse:collapse;background:#fff}td,th{padding:8px;border-bottom:1px solid var(--ln);text-align:left;font-size:.95rem}
+.wrap{overflow-x:auto}.stats{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.stats b{font-size:1.6rem;display:block}
+.tag{background:#eee;border-radius:6px;padding:2px 8px;font-size:.85rem}.inline{display:inline}
+@media(min-width:760px){.hero{grid-template-columns:1fr 1fr}}
+@media print{header,footer,.noprint,.flash{display:none}body{background:#fff}}

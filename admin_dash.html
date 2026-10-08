@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block c %}<h1>Dashboard</h1><div class="stats">
+<div class="card">New Orders<b>{{ st.new }}</b></div><div class="card">Pending<b>{{ st.pending }}</b></div><div class="card">Completed<b>{{ st.done }}</b></div>
+<div class="card">Cancelled<b>{{ st.cancelled }}</b></div><div class="card">Today's Sales<b>Rs. {{ st.today }}</b></div><div class="card">Total Orders<b>{{ st.total }}</b></div>
+<div class="card">Available Products<b>{{ st.avail }}</b></div></div>
+<h2>Recent orders</h2>{% set rows=recent %}{% include 'orders_table.html' %}{% endblock %}
